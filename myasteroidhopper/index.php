@@ -105,6 +105,9 @@
 	
 	$(window).load(function(){
 	    initialize();
+            
+            getAsteroids();
+            
 	    $("#sun").colorbox({inline:true, width:"50%"});
             $("#star").colorbox({inline:true, width:"50%"});
             
@@ -145,6 +148,10 @@
                 jQuery('html, body').animate({scrollTop: jQuery("#sky_map").offset().top}, 1000);
             });
 	});
+        
+        function getAsteroids(){
+            
+        }
 	function initialize() {
 	    if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("sky_map"), {
