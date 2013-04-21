@@ -1,0 +1,357 @@
+/* line 31, /Users/max/kepler-explorer/kepler/sass/plugins/_reset.sass */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+/* line 38, /Users/max/kepler-explorer/kepler/sass/plugins/_reset.sass */
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  height: 100%;
+}
+
+/* line 81, /Users/max/kepler-explorer/kepler/sass/plugins/_reset.sass */
+p {
+  margin: 0 0 1.5em 0;
+}
+
+/* line 134, /Users/max/kepler-explorer/kepler/sass/plugins/_reset.sass */
+nav ul, nav ol {
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 147, /Users/max/kepler-explorer/kepler/sass/plugins/_reset.sass */
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* line 154, /Users/max/kepler-explorer/kepler/sass/plugins/_reset.sass */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* line 85, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+input[type="file"] {
+  width: auto;
+  padding: initial;
+  line-height: initial;
+  border: initial;
+  background-color: initial;
+}
+
+/* line 93, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  width: auto;
+  height: auto;
+}
+
+/* line 100, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+select,
+input[type="file"] {
+  height: 28px;
+  *margin-top: 4px;
+  line-height: 28px;
+}
+
+/* line 107, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+input[type="file"] {
+  line-height: 18px \9;
+}
+
+/* line 112, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+select {
+  width: 220px;
+  background-color: white;
+}
+
+/* line 117, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+/* line 122, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+textarea {
+  height: auto;
+}
+
+/* line 127, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+input[type="hidden"] {
+  display: none;
+}
+
+/* line 134, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+.radio,
+.checkbox {
+  padding-left: 18px;
+}
+
+/* line 138, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: -18px;
+}
+
+/* line 145, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+  padding-top: 5px;
+}
+
+/* line 152, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+.radio.inline,
+.checkbox.inline {
+  padding-top: 5px;
+  margin-bottom: 0;
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+}
+/* line 7, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+.radio.inline,
+.checkbox.inline {
+  *display: inline;
+}
+
+/* line 158, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+  margin-left: 10px;
+}
+
+/* line 164, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+input[class*="span"],
+select[class*="span"],
+textarea[class*="span"],
+.uneditable-input {
+  float: none;
+  margin-left: 0;
+}
+
+/* line 176, /Users/max/kepler-explorer/kepler/sass/shared/_forms.sass */
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #eeeeee;
+  border-color: #dddddd;
+  cursor: not-allowed;
+}
+
+
+/* line 8, /Users/max/kepler-explorer/kepler/sass/sections/_systems.sass */
+div#wrap, div#site-main, div.structure {
+  height: 100%;
+}
+
+
+@media print {
+  /* line 7, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* line 15, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  a {
+    text-decoration: underline;
+  }
+  /* line 17, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  a:visited {
+    text-decoration: underline;
+  }
+  /* line 19, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 21, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 24, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 27, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  pre, blockquote {
+    border: 1px solid #999999;
+    page-break-inside: avoid;
+  }
+
+  /* line 30, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  thead {
+    display: table-header-group;
+  }
+
+  /* line 33, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* line 35, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 41, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 44, /Users/max/kepler-explorer/kepler/sass/plugins/_print.sass */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
+
+
+.control{
+  background-image: url("../images/bar_bg.png");
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
+
+.spinners{
+  clear: both;
+}
+.arrow{
+  background-repeat: no-repeat;
+  width: 19px;
+  height: 19px;
+  background-position: 50% 50%;
+  display: block;
+  float: right;
+  margin-right: 3%;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.arrowDown{
+  background-image: url("../images/arrow_down.png");
+}
+
+.arrowRight{
+  background-image: url("../images/arrow_right.png");
+}
+.arrowLeft{
+  background-image: url("../images/arrow_left.png");
+}
+
+body {
+  font-family: myriad pro;
+  background: #ffffff;
+  color: #000000;
+}
+#sky_map{
+}
+
+.logo{
+  color: #A46AAA;
+  font-size: 2em;
+  text-decoration: none;
+  padding: 6px 10px;
+  display: block;
+  float: left;
+}
+h1{
+  background-image: url("../images/cosmic_bg.png");
+background-repeat: repeat-x;
+color: #ffffff;
+padding: 10px 0;
+text-align: center;
+}
+.section{
+  clear: both;
+position: relative;
+width: 100%;
+padding-top: 30px;
+min-height: 100%;
+}
+p{
+  width: 80%;
+  margin: 0 auto;
+}
+#about img{
+  max-width: 50%;
+margin: 10px auto 50px auto;
+display: block;
+}
+
+.listContainer{
+  clear: both;
+max-height: 100px;
+overflow: hidden;
+margin: 10px 0 5px 0;
+}
+
+.listContainer li{
+list-style: none;
+float: left;
+}
+
+.listContainer li a{
+color: #FFFFFF;
+text-decoration: none;
+padding: 5px 10px;
+}
+
+.list{
+  margin: 0;
+padding: 0;
+}
+
+.pagination{
+  margin: 0 auto;
+padding: 10px 0;
+width: 50px;
+}
+.pagButton{
+  display: block;
+width: 16px;
+height: 18px;
+float: left;
+background-repeat: no-repeat;
+margin: 2px 3px;
+cursor: pointer;
+}
+
+.prev.pagButton{
+  background-image: url("../images/arrow_left.png");
+}
+.next.pagButton{
+  background-image: url("../images/arrow_right.png");
+}
