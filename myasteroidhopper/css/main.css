@@ -355,3 +355,17 @@ cursor: pointer;
 .next.pagButton{
   background-image: url("../images/arrow_right.png");
 }
+
+.inlineContent{
+  
+}
+
+.inlineContent img{
+  float: left !important;
+  width: 40%;
+}
+
+.inlineContent p{
+  float: left !important;
+  width: 50%;
+}

@@ -71,8 +71,10 @@
 	
 	<div id="linksContainer" style="display:none;">
             <a id="sun" href="#sun_content" ></a>
+            <a id="star" href="#inline_content" ></a>
 	</div>
 	<div id="colorboxContents" style='display:none'>
+            <div id='inline_content' class="inlineContent" style='padding:10px; background:#fff;'></div>
             <div id='sun_content' style='padding:10px; background:#fff;'>
 		<h1>Sun</h1>
 		<div>
@@ -96,14 +98,52 @@
 
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA1Wn8H9VA5NSOVRIMUIarcRSs0R12aLb9PbAGCcsfG7w_64TQqRRLIQXLu_a-nPOfIyyUY40UnNZtoQ" type="text/javascript"></script>
     <script type="text/javascript">
-    var map ;
+        var map ;
+        var marker;
 	
 	    //<![CDATA[
 	
 	$(window).load(function(){
 	    initialize();
 	    $("#sun").colorbox({inline:true, width:"50%"});
-            //$("#star1").colorbox({inline:true, width:"50%"});
+            $("#star").colorbox({inline:true, width:"50%"});
+            
+            $(".logo").click(function(){
+                var ua = navigator.userAgent;
+                if (ua.indexOf("BlackBerry") >= 0)
+                {
+                  window.scrollBy(0,0);
+                }else{
+                  jQuery('html, body').animate({scrollTop: jQuery("#home").offset().top}, 1000);
+                }
+            });
+            
+            $(".list li a").click(function(){
+                //get asteroid id
+                var id = $(this).attr("id");
+                id = id.replace('link_','');
+                
+                //get asteroid data by id
+                var obj = jQuery.parseJSON('{"a": "2.6707341", "Node": "169.88278", "e": "0.25530539", "D": "54.2745028204", "G": "0.32", "i": "12.97937", "H": "5.33", "M": "257.6392602", "e_type": "e", "n": "9.52493364674", "ephem_list": [{"dec": -0.14602110692343545, "here_date": 35474.5, "ra": 5.443538996148381, "mag": 11.14}, {"dec": -0.13743765396970684, "here_date": 35479.5, "ra": 5.474796733753414, "mag": 11.16}, {"dec": -0.12848053194958695, "here_date": 35484.5, "ra": 5.505826066360945, "mag": 11.17}, {"dec": -0.1191698228062876, "here_date": 35489.5, "ra": 5.536603091773308, "mag": 11.17}, {"dec": -0.1095296893329475, "here_date": 35494.5, "ra": 5.5670986854505315, "mag": 11.17}, {"dec": -0.0995892130795109, "here_date": 35499.5, "ra": 5.59726622268493, "mag": 11.17}, {"dec": -0.08937789948920992, "here_date": 35504.5, "ra": 5.6270702500710845, "mag": 11.17}, {"dec": -0.07892750500023897, "here_date": 35509.5, "ra": 5.656477914227292, "mag": 11.16}, {"dec": -0.06826464098780678, "here_date": 35514.5, "ra": 5.685463241472366, "mag": 11.15}, {"dec": -0.05741554025171361, "here_date": 35519.5, "ra": 5.714003209292986, "mag": 11.13}, {"dec": -0.04641290861137865, "here_date": 35524.5, "ra": 5.742056732600806, "mag": 11.11}, {"dec": -0.03529160168812759, "here_date": 35529.5, "ra": 5.7695765903999074, "mag": 11.09}, {"dec": -0.024089656107867664, "here_date": 35534.5, "ra": 5.796521364684541, "mag": 11.07}, {"dec": -0.012843054437941181, "here_date": 35539.5, "ra": 5.822851119007219, "mag": 11.04}, {"dec": -0.001583339774653875, "here_date": 35544.5, "ra": 5.848533363563524, "mag": 11.0}, {"dec": 0.00965373913892299, "here_date": 35549.5, "ra": 5.873524588980032, "mag": 10.97}, {"dec": 0.020825511364600827, "here_date": 35554.5, "ra": 5.897759987810874, "mag": 10.93}, {"dec": 0.031886275140860426, "here_date": 35559.5, "ra": 5.921175829791028, "mag": 10.88}], "epoch": "56400.0", "q": "248.30986", "_id": {"$oid": "517440057872e4089b7dcf74"}, "name": "Juno"}');
+                
+                var i = 0;
+                var dir = 1;
+                setInterval(function(){
+                    drawStar(obj.name, obj.ephem_list[i].ra,obj.ephem_list[i].dec);
+                    console.log(i+ " - " + obj.ephem_list[i].ra + " " + obj.ephem_list[i].dec);
+                    if(dir > 0){
+                        i++;
+                        if(i == (obj.ephem_list.length-1))
+                            dir = -1;
+                    }else{
+                        i--;
+                        if(i==0)
+                            dir = 1;
+                    }
+                },1000);
+                
+                jQuery('html, body').animate({scrollTop: jQuery("#sky_map").offset().top}, 1000);
+            });
 	});
 	function initialize() {
 	    if (GBrowserIsCompatible()) {
@@ -112,27 +152,10 @@
 		});
                 
                 var zoomLevel = 5;
-		
-		var Sun = new GIcon();
-		Sun.image = "images/sun_marker.png";
-		Sun.iconSize = new GSize(60, 60);
-		Sun.iconAnchor = new GPoint(30, 30);
-		Sun.infoWindowAnchor = new GPoint(30, 0);
-
-		var sun = new GMarker(new GLatLng(0.516648002347,0.210940216571),Sun);
-                
-		map.addControl(new GLargeMapControl());
+                map.addControl(new GLargeMapControl());
 		map.addControl(new GMapTypeControl()); 
-		map.setCenter(latlng, 13);
+		map.setCenter(new GLatLng(0.516648002347,0.210940216571), 13);
 		map.setZoom(zoomLevel);
-		
-                GEvent.addListener(sun, "click", function() {
-		    $('#sun').click();
-		    
-		});
-		map.addOverlay(sun);
-                
-                drawStar("Ceres", 6.114154615610369,-0.19251728809535923,1) ;
 	    }
 	}
 	function ra2lon(ra){
@@ -145,44 +168,49 @@
 	}
     </script>
     <script>
-        function drawStar(name, latitude,longitude,id) {
+        function drawStar(name, latitude,longitude) {
             
             //create colorbox content
-            var html = "<div id='inline_content_"+id+"' style='padding:10px; background:#fff;'>";
-	    html += "<h1>"+name+"</h1>";
+	    var html = "<h1>"+name+"</h1>";
 	    html += "<div>";
 	    html += "    <img src='images/asteroid_medium.png' alt='"+name+"' />";
 	    html += "    <p>Mass 895.8E18 kg</p>";
 	    html += "    <p>Distance from the sun 895.8E18 kg</p>";
-	    html += "</div>";
-	    html += "</div>";
+	    html += "</div><div style='clear:both;'></div>";
             
-            $("#colorboxContents").append(html);
+            $("#inline_content").html(html);
+            $("#star").colorbox({inline:true, width:"50%"});
             
-            //create link for colorbox
-            html = "<a id='star_"+id+"' class='star' href='#inline_content_"+id+"' ></a>";
-            $("#linksContainer").append(html);
+            map.clearOverlays();
             
-            $("#star_"+id).colorbox({inline:true, width:"50%"});
-            
+            var Sun = new GIcon();
+	    Sun.image = "images/sun_marker.png";
+	    Sun.iconSize = new GSize(60, 60);
+	    Sun.iconAnchor = new GPoint(30, 30);
+	    Sun.infoWindowAnchor = new GPoint(30, 0);
+
+	    var sun = new GMarker(new GLatLng(0.516648002347,0.210940216571),Sun);
+            GEvent.addListener(sun, "click", function() {
+		$('#sun').click();    
+	    });
+	    map.addOverlay(sun);
+                
             //create marker icon
             var Icon = new GIcon();
-	    Icon.image = "images/asteroid_marker.png";
-	    Icon.iconSize = new GSize(65, 45);
-	    Icon.iconAnchor = new GPoint(32, 22);
-	    Icon.infoWindowAnchor = new GPoint(32, 0);
-                
+            Icon.image = "images/asteroid_marker.png";
+            Icon.iconSize = new GSize(65, 45);
+            Icon.iconAnchor = new GPoint(32, 22);
+            Icon.infoWindowAnchor = new GPoint(32, 0);
+                    
             //create marker
-            var marker = new GMarker(new GLatLng(latitude, longitude),Icon);
-            
+            marker = new GMarker(new GLatLng(latitude,longitude),Icon);
+                
             //add marker to map
             GEvent.addListener(marker, "click", function() {
-		$("#star_"+id).click();
-	    });
-            
+                $("#star").click();
+            });
+                
             map.addOverlay(marker);
-            
-            
         }
         
         $( ".listContainer" ).hide();
